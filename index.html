@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Banking System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar" id="navbar" style="display:none;">
+    <div class="brand"><span class="icon">🏦</span>Union Bank</div>
+    <div class="user-info">
+      <span id="navUser"></span>
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+  </div>
+
+  <div class="centered-card" id="loginCard">
+    <h1 style="margin-bottom:1.5rem;">Sign In</h1>
+    <form id="loginForm">
+      <label for="loginUsername">Username</label>
+      <input type="text" id="loginUsername" autocomplete="username" required>
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" autocomplete="current-password" required>
+      <button type="submit" style="width:100%;margin-top:1rem;">Login</button>
+    </form>
+    <div style="text-align:center;margin:1.2rem 0 0.5rem 0;color:#888;">or</div>
+    <button class="btn" id="showRegisterBtn" style="width:100%;background:var(--accent);color:#222;">Create New Account</button>
+  </div>
+
+  <div class="centered-card" id="registerCard" style="display:none;">
+    <h1 style="margin-bottom:1.5rem;">Register</h1>
+    <form id="registerForm">
+      <label for="registerUsername">Username</label>
+      <input type="text" id="registerUsername" required>
+      <label for="registerPassword">Password</label>
+      <input type="password" id="registerPassword" required>
+      <button type="submit" style="width:100%;margin-top:1rem;">Register</button>
+    </form>
+    <button class="btn" id="showLoginBtn" style="width:100%;background:var(--accent);color:#222;margin-top:1.2rem;">Back to Login</button>
+  </div>
+
+  <div class="centered-card" id="dashboardCard" style="display:none;max-width:900px;">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="accounts">Accounts</button>
+      <button class="tab-btn" data-tab="actions">Actions</button>
+      <button class="tab-btn" data-tab="transactions">Transactions</button>
+    </div>
+    <div id="tab-accounts" class="tab-section">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h2 style="margin:0;">Your Accounts</h2>
+        <button class="btn" id="openCreateAccountModal" style="background:var(--accent);color:#222;">+ New Account</button>
+      </div>
+      <table class="table" id="accountsTable">
+        <thead>
+          <tr><th>Account #</th><th>Name</th><th>Balance</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div id="tab-actions" class="tab-section" style="display:none;">
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <button class="btn" id="openDepositModal">Deposit</button>
+        <button class="btn" id="openWithdrawModal">Withdraw</button>
+        <button class="btn" id="openTransferModal">Transfer</button>
+        <button class="btn" id="openBalanceModal">Check Balance</button>
+      </div>
+    </div>
+    <div id="tab-transactions" class="tab-section" style="display:none;">
+      <h2 style="margin:0 0 0.7rem 0;">Transaction History</h2>
+      <div style="margin-bottom:0.7rem;">
+        <label for="filterAccount">Filter by Account:</label>
+        <select id="filterAccount"><option value="">All</option></select>
+      </div>
+      <table class="table" id="transactionsTable">
+        <thead>
+          <tr><th>Date</th><th>Account #</th><th>Type</th><th>Amount</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal-bg" id="modalBg">
+    <div class="modal" id="modalBox">
+      <button class="close" id="closeModal">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html> 
